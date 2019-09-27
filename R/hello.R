@@ -14,7 +14,7 @@
 #   Test Package:              'Cmd + Shift + T'
 
 hello <- function() {
-  print("Hello, world! Can I connect to GitHub?")
+  print("Hello, world! Can I connect to GitHub? Did it work?")
 }
 
 library("devtools")
