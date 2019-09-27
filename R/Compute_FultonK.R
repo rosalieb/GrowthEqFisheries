@@ -9,7 +9,7 @@
 #' @param outliers Index of any point that should be discarded from computation
 #'
 #' @export
-#' @examples Compute_FultonK(pop_length = YPerchTL$length/10, pop_weight = FSAdata::YPerchTL$weight, bin_limits = c(0,7.5,10,17.5))
+#' @examples Compute_FultonK(pop_length = FSAdata::YPerchTL$length/10, pop_weight = FSAdata::YPerchTL$weight, bin_limits = c(0,7.5,10,17.5))
 #'
 #' @keywords fisheries
 #' @keywords Fulton's condition factor
@@ -95,14 +95,15 @@ Compute_FultonK <- function(pop_ID=NULL, pop_length, pop_weight, bin_limits=NULL
 
   # Save number of outputs
   list_out$Growth_parameters <- param[!is.na(param[,3]),]
-  list_out$plot_WL <- p1
-  list_out$plot_WL_log <- p2
-  list_out$plot_KL <- p3
 
   aplot <- ggplot(param, aes((param$Min_size+param$Max_size)/2, a)) + geom_point() + stat_smooth() +xlab("Average size (cm)")
   bplot <- ggplot(param, aes((param$Min_size+param$Max_size)/2, b)) + geom_point() + stat_smooth() +xlab("Average size (cm)")
   list_out$plot_param_a <- aplot
   list_out$plot_param_b <- bplot
+
+  list_out$plot_WL <- p1
+  list_out$plot_WL_log <- p2
+  list_out$plot_KL <- p3
 
   return(list_out)
 }
